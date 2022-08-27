@@ -150,7 +150,7 @@ class PostsPagesTests(TestCase):
         post = response.context['page_obj'][0]
         group = post.group
         self.assertEqual(group, self.group)
-    
+
     def test_context_in_template_index(self):
         """
         При создании поста с указанием группы,
@@ -159,5 +159,3 @@ class PostsPagesTests(TestCase):
         response = self.auth_author_client.get(reverse('posts:index'))
         last_post = response.context['page_obj'][0]
         self.assertEqual(last_post, self.post)
-    
-   
