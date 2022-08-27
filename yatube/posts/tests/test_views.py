@@ -143,3 +143,21 @@ class PostsPagesTests(TestCase):
         self.assertEqual(response.context.get('post').text, self.post.text)
         self.assertEqual(response.context.get('post').author, self.post.author)
         self.assertEqual(response.context.get('post').group, self.post.group)
+
+    def test_post_new_not_in_group(self):
+        """Проверка поста в другой группе."""
+        response = self.auth_author_client.get(reverse('posts:index'))
+        post = response.context['page_obj'][0]
+        group = post.group
+        self.assertEqual(group, self.group)
+    
+    def test_context_in_template_index(self):
+        """
+        При создании поста с указанием группы,
+        этот пост появляется на главной странице сайта.
+        """
+        response = self.auth_author_client.get(reverse('posts:index'))
+        last_post = response.context['page_obj'][0]
+        self.assertEqual(last_post, self.post)
+    
+   

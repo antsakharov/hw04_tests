@@ -50,10 +50,20 @@ class PostsURLTests(TestCase):
         response = self.authorized_client.get('/create/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
 
+    def test_url_avaliable_to_authorized_user_redirect_anonymous(self):
+        """Страница создания поста перенаправляет анонимного пользователя."""
+        response = self.guest_client.get('/create/')
+        self.assertEqual(response.status_code, HTTPStatus.FOUND)
+
     def test_url_available_to_author_post(self):
         """Посты автора"""
         response = self.post_author.get(f'/posts/{self.post.id}/edit/')
         self.assertEqual(response.status_code, HTTPStatus.OK)
+    
+    def test_url_available_to_author_post_redirect_anonymous(self):
+        """Страница редактирования поста перенаправляет анонимного пользователя."""
+        response = self.guest_client.get(f'/posts/{self.post.id}/edit/')
+        self.assertEqual(response.status_code, HTTPStatus.FOUND)
 
     def test_url_use_correct_template(self):
         """Правильность шаблонов"""
@@ -69,3 +79,8 @@ class PostsURLTests(TestCase):
             with self.subTest(url=url):
                 response = self.post_author.get(url)
                 self.assertTemplateUsed(response, template)
+    
+    def test_url_404(self):
+        """Запрос к несуществующей странице вернёт ошибку 404."""
+        response = self.client.get('/some_page_404/')
+        self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
