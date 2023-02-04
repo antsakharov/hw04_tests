@@ -21,7 +21,7 @@
 
 •	**Стек:**
 
-Python 3.7, Django 2.2.19, SQLite, pytest, Unittest
+Python 3.7, Django 2.2.19, SQLite, pytest, Unittest.
 
 ## Инструкция по развёртыванию проекта
 
