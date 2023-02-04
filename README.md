@@ -1,17 +1,70 @@
 # yatube_project
-### Описание
-Социальная сеть для публикации личных дневников.
-### Технологии
-Python 3.7
-Django 2.2.19
-HTML
-### Запуск проекта в dev-режиме
-- Установите и активируйте виртуальное окружение
-- Установите зависимости из файла requirements.txt
+
+## Описание проекта: 
+
+•	**Назначение:** 
+
+Четвертая версия социальной сети для публикации личных дневников. 
+
+•	**Реализованный функционал:** 
+
+1. Тестирование моделей
+2. Тестирование URLs
+3. Проверка namespace:name и шаблонов
+4. Тестирование контекста
+5. Дополнительная проверка при создании поста
+6. Тестирование Forms
+
+•	**Цель выполнения проекта:**
+
+Практика работы с фреймворком Django,БД,Админ-панелью
+
+•	**Стек:**
+
+Python 3.7, Django 2.2.19, SQLite, pytest, Unittest
+
+## Инструкция по развёртыванию проекта
+
+•	**Клонируйте репозиторий:**
+
+```csharp 
+git clone git@github.com:antsakharov/yatube_project.git
 ```
+
+•	**Установите и активируйте виртуальное окружение:**
+
+**для Linux и MacOS**
+
+```csharp 
+python3 -m venv venv
+```
+
+**для Windows**
+
+```csharp 
+python -m venv venv
+```
+
+```csharp 
+source venv/bin/activate
+```
+
+```csharp 
+source venv/Scripts/activate
+```
+
+•	**Установите зависимости из файла requirements.txt:**
+
+```csharp 
 pip install -r requirements.txt
-``` 
-- В папке с файлом manage.py выполните команду:
 ```
-python3 manage.py runserver
+•	**Создайте и выполните миграции:**
+
+```csharp 
+python manage.py makemigrations
 ```
+
+```csharp 
+python manage.py migrate
+```
+
